@@ -112,7 +112,7 @@ var powerOfTwo = function(n) {
 // 'Miggy' --> 'yggiM'
 // Ways of reversing a string:
   // with split(), reverse(), and join()
-  // create a for loop and add the last letter of the string to an empty string
+  // create a for loop and add the last letter of the string to an empty string.
 var reverse = function(string) {
   if (string === "") {
     return "";
