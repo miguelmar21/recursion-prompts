@@ -83,21 +83,57 @@ var range = function(x, y) {
 // exponent(4,3); // 64
 // https://www.khanacademy.org/computing/computer-science/algorithms/recursive-algorithms/a/computing-powers-of-a-number
 var exponent = function(base, exp) {
+  //Base case
+  if(exp === 0) {
+    return 1;
+  }
+
+  if(exp < 0) {
+    return 1 / (exponent(base, -1*exp));
+  }
+
+  return base * exponent(base, exp-1);
 };
 
 // 8. Determine if a number is a power of two.
 // powerOfTwo(1); // true
 // powerOfTwo(16); // true
 // powerOfTwo(10); // false
+
+// A power of 2 integer should always equal 1 after dividing it by 2.
+  // 16 / 2 = 8 / 2 = 4 / 2 = 2 / 2 = 1
+  // 6 / 2 = 3 / 2 = 1.5 <-- Not a power of 2.
+  // This also means that once n is odd, then n is not a power of 2
 var powerOfTwo = function(n) {
+  return n === 0 ? false : n === 1 ? true : n % 2 !==0 ? false : powerOfTwo(n/2);
 };
 
 // 9. Write a function that reverses a string.
+// 'Miggy' --> 'yggiM'
+// Ways of reversing a string:
+  // with split(), reverse(), and join()
+  // create a for loop and add the last letter of the string to an empty string
 var reverse = function(string) {
+  if (string === "") {
+    return "";
+  }
+
+  return reverse(string.substr(1)) + string.charAt(0);
 };
 
 // 10. Write a function that determines if a string is a palindrome.
 var palindrome = function(string) {
+  var str = string.toLowerCase();
+
+  if (str.length < 2) {
+    return true; 
+  }
+
+  if (str[0] === str[str.length - 1]) {
+    return palindrome(string.slice(1, string.length - 1));
+  }
+
+  return false;
 };
 
 // 11. Write a function that returns the remainder of x divided by y without using the
